@@ -6,7 +6,7 @@ https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/
 
 Introduction
 ------------
-AutoItLibrary is a Python keyword library that extends the Robot Framework (http://code.google.com/p/robotframework/) by providing keywords based on the COM interface to AutoIt (http://www.autoitscript.com/autoit3/index.shtml). AutoIt is a freeware tool providing a scripting language for automating the Windows GUI.
+AutoItLibrary is a Python keyword library that extends the Robot Framework (http://code.google.com/p/robotframework/) by providing keywords based on the AutoItX COM object. The AutoItX COM object itself belongs to AutoIt (http://www.autoitscript.com/autoit3/index.shtml), which is a set of freeware tools providing for example a scripting language for automating the Windows GUI.
 
 In order to do screenshots, the AutoItLibrary uses the Open Source Python Image Library tool PIL (http://www.pythonware.com/products/pil/). Unfortunately this library is not maintained anymore and additionally only available for 32 Bit operating systems. Hence automatically taking screenshots in case of a failed AutoItLibrary keyword is currently not possible on 64 Bit OSs. A possible workaround would be to adapt AutoItLibrary in such a way that the PIL fork "pillow" (https://python-pillow.org/) is used.
 
@@ -29,11 +29,12 @@ on your PC and put various files there.
 
 Documentation
 -------------
-AutoItLibrary documentation is installed by the installation process into
+For both AutoItLibrary and AutoItX the documentation is installed by the installation process into
 
-    C:\RobotFramework\Extensions\AutoItLibrary\AutoItLibrary.html
+    C:\RobotFramework\Extensions\AutoItLibrary\
 
-The AutoItX documentation is also installed into this folder as AutoItX.chm.
+- the documentation for the Robot library "AutoItLibrary" is provided as HTML file: AutoItLibrary.html
+- the documentation for the COM control "AutoItX" is provided as compiled HTML file: AutoItX.chm
 
 
 Tests
