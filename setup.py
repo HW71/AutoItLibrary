@@ -71,18 +71,22 @@ if __name__ == "__main__":
         # and make its methods known to Python
         #
         cmd = r"%SYSTEMROOT%\system32\regsvr32.exe /S " + instFile
-        print cmd
+        print "\nRegistering COM object using command: {}".format(cmd)
         subprocess.check_call(cmd, shell=True)
-        makepy = os.path.normpath(os.path.join(get_python_lib(), "win32com/client/makepy.py"))
+
         #
         # Make sure we have win32com installed
         #
+        makepy = os.path.normpath(os.path.join(get_python_lib(), "win32com/client/makepy.py"))
         if not os.path.isfile(makepy) :
             print "AutoItLibrary requires win32com. See http://starship.python.net/crew/mhammond/win32/."
             sys.exit(2)
 
+        #
+        # Generate Python code out of COM object using makepy...
+        #
         cmd = "python %s %s" % (makepy, instFile)
-        print cmd
+        print "\nGenerate Python code out of COM object using command: {}".format(cmd)
         subprocess.check_call(cmd)
 
     #
