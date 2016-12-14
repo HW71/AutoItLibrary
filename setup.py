@@ -52,32 +52,57 @@ if __name__ == "__main__":
         print "AutoItLibrary cannot be installed on non-Windows platforms. os.name == '{}'.".format(os.name)
         sys.exit(2)             
 
-    if len(sys.argv) != 3 :
-        print "Wrong number of arguments..."
+    #
+    # Check for valid number of arguments...
+    #
+    if ((len(sys.argv) != 2) and (len(sys.argv) != 3)) :
+        print "Wrong number of arguments: {}...".format(len(sys.argv))
         sys.exit(2)
 
-    if (sys.argv[2].lower() != "x32") and (sys.argv[2].lower() != "x64") :
-        print "Invalid arguments..."
-        sys.exit(2)
-    
     #
-    # Distinguish processor architecture...
+    # Check processor architecture of currently used Python interpreter...
     #
-    if sys.argv[2].lower() == "x32" :
+    if (sys.maxsize > 2**32) :
+        isX64Python = True
+        print "\nWe seem to run on a 64 Bit Python interpreter..."
+    else :
+        isX64Python = False
+        print "\nWe seem to run on a 32 Bit Python interpreter..."
+
+    passedArguments = ""
+    if (len(sys.argv) == 3) :
+        passedArguments = sys.argv[2].lower()
+
+        if (passedArguments != "x32") and (passedArguments != "x64") :
+            print "Invalid arguments..."
+            sys.exit(2)
+
+        if ((passedArguments == "x32") and isX64Python is True) or ((passedArguments == "x64") and isX64Python is False) :
+            print "WARNING: Requested processor architecture {} doesn't seem to match current Python interpreter!".format(passedArguments)
+
+        # Ugly hack in order to not interfere with call to Distutils setup()
+        if (passedArguments == "x32") :
+            sys.argv.remove("x32")
+        else :
+            sys.argv.remove("x64")
+
+    #
+    # Distinguish processor architecture to be used for installation...
+    #
+    if ((passedArguments == "x32") or ((passedArguments == "") and (isX64Python == False))) :
         print "Installing 32 Bit version of AutoItX3 COM object..."
         dllName = "AutoItX3.dll"
         # Use 32 Bit version of Au3Info tool later on in distribution process
         exeName = "Au3Info.exe"
-        # Ugly hack in order to not interfere with call to Distutils setup()
-        sys.argv.remove("x32")
-    else :
+    elif ((passedArguments == "x64") or ((passedArguments == "") and (isX64Python == True))) :
         print "Installing 64 Bit version of AutoItX3 COM object..."
         dllName = "AutoItX3_x64.dll"
         # Use 64 Bit version of Au3Info tool later on in distribution process
         exeName = "Au3Info_x64.exe"
-        # Ugly hack in order to not interfere with call to Distutils setup()
-        sys.argv.remove("x64")
-         
+    else :
+        print "Problem detecting processor architecture to be used for installation!"
+        sys.exit(2)
+
     #
     # Install and register AutoItX
     #
