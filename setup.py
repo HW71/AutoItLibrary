@@ -4,7 +4,7 @@ Module:  AutoItLibrary Installation Module
 Purpose: This is a Python "Distutils" setup program used to build installers for and to install the
          robotframework-AutoItLibrary.
 
-         Copyright (c) 2008-2010 Texas Instruments, Inc.
+         Based on AutoItLibrary 1.1 by Texas Instruments, Inc. / Martin Taylor hosted on Google Code.
 
          Licensed under the Apache License, Version 2.0 (the "License");
          you may not use this file except in compliance with the License.
