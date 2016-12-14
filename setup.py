@@ -18,7 +18,7 @@ Purpose: This is a Python "Distutils" setup program used to build installers for
          See the License for the specific language governing permissions and
          limitations under the License.
 """
-__author__  = "Martin Taylor <cmtaylor@ti.com>"
+__author__  = "Erik Fornoff <erik.fornoff@gmail.com>"
 
 from distutils.core      import setup
 from distutils.sysconfig import get_python_lib
@@ -51,43 +51,68 @@ if __name__ == "__main__":
     if os.name != "nt" :
         print "AutoItLibrary cannot be installed on non-Windows platforms. os.name == '{}'.".format(os.name)
         sys.exit(2)             
+
+    if len(sys.argv) != 3 :
+        print "Wrong number of arguments..."
+        sys.exit(2)
+
+    if (sys.argv[2].lower() != "x32") and (sys.argv[2].lower() != "x64") :
+        print "Invalid arguments..."
+        sys.exit(2)
+    
     #
-    # Install the 3rd party packages
+    # Distinguish processor architecture...
     #
-    if sys.argv[1].lower() == "install" :
-        #
-        # Install and register AutoItX
-        #
-        if os.path.isfile(os.path.join(get_python_lib(), "AutoItLibrary/lib/AutoItX3.dll")) :
-            print "Don't think we need to unregister the old one..."
+    if sys.argv[2].lower() == "x32" :
+        print "Installing 32 Bit version of AutoItX3 COM object..."
+        dllName = "AutoItX3.dll"
+        # Use 32 Bit version of Au3Info tool later on in distribution process
+        exeName = "Au3Info.exe"
+        # Ugly hack in order to not interfere with call to Distutils setup()
+        sys.argv.remove("x32")
+    else :
+        print "Installing 64 Bit version of AutoItX3 COM object..."
+        dllName = "AutoItX3_x64.dll"
+        # Use 64 Bit version of Au3Info tool later on in distribution process
+        exeName = "Au3Info_x64.exe"
+        # Ugly hack in order to not interfere with call to Distutils setup()
+        sys.argv.remove("x64")
+         
+    #
+    # Install and register AutoItX
+    #
+    if os.path.isfile(os.path.join(get_python_lib(), "AutoItLibrary/lib/"+dllName)) :
+        print "Don't think we need to unregister the old one..."
 
-        instDir = os.path.normpath(os.path.join(get_python_lib(), "AutoItLibrary/lib"))
-        if not os.path.isdir(instDir) :
-            os.makedirs(instDir)
-        instFile = os.path.normpath(os.path.join(instDir, "AutoItX3.dll"))
-        shutil.copyfile("3rdPartyTools/AutoIt/AutoItX3.dll", instFile)
-        #
-        # Register the AutoItX COM object
-        # and make its methods known to Python
-        #
-        cmd = r"%SYSTEMROOT%\system32\regsvr32.exe /S " + instFile
-        print "\nRegistering COM object using command: {}".format(cmd)
-        subprocess.check_call(cmd, shell=True)
+    instDir = os.path.normpath(os.path.join(get_python_lib(), "AutoItLibrary/lib"))
+    if not os.path.isdir(instDir) :
+        os.makedirs(instDir)
+    instFile = os.path.normpath(os.path.join(instDir, dllName))
+    shutil.copyfile("3rdPartyTools/AutoIt/"+dllName, instFile)
 
-        #
-        # Make sure we have win32com installed
-        #
-        makepy = os.path.normpath(os.path.join(get_python_lib(), "win32com/client/makepy.py"))
-        if not os.path.isfile(makepy) :
-            print "AutoItLibrary requires win32com. See http://starship.python.net/crew/mhammond/win32/."
-            sys.exit(2)
+    #
+    # Register the AutoItX COM object
+    # and make its methods known to Python
+    #
+    cmd = r"%SYSTEMROOT%\system32\regsvr32.exe /S " + instFile
+    print "\nRegistering COM object using command:\n{}".format(cmd)
+    subprocess.check_call(cmd, shell=True)
 
-        #
-        # Generate Python code out of COM object using makepy...
-        #
-        cmd = "python %s %s" % (makepy, instFile)
-        print "\nGenerate Python code out of COM object using command: {}".format(cmd)
-        subprocess.check_call(cmd)
+    #
+    # Make sure we have win32com installed
+    #
+    makepy = os.path.normpath(os.path.join(get_python_lib(), "win32com/client/makepy.py"))
+    if not os.path.isfile(makepy) :
+        print "AutoItLibrary requires win32com. See http://starship.python.net/crew/mhammond/win32/."
+        sys.exit(2)
+
+    #
+    # Generate Python code out of COM object using makepy...
+    #
+    cmd = "python %s %s" % (makepy, instFile)
+    print "\nGenerate Python code out of COM object using command:\n{}".format(cmd)
+    subprocess.check_call(cmd)
+    print "Done!\n"
 
     #
     # Figure out the install path
@@ -97,11 +122,11 @@ if __name__ == "__main__":
     # Do the distutils installation
     #
     setup(name         = "AutoItLibrary",
-          version      = "1.1",
-          description  = "AutoItLibrary for Robot Framework",
-          author       = "Martin Taylor",
-          author_email = "cmtaylor@ti.com",
-          url          = "http://code.google.com/p/robotframework-autoitlibrary/",
+          version      = "1.1.1",
+          description  = "AutoItLibrary for Robot Framework with 64 Bit support",
+          author       = "Erik Fornoff",
+          author_email = "efornoff@iname.com",
+          url          = "https://github.com/HW71/AutoItLibrary",
           license      = "Apache License 2.0",
           platforms    = "Microsoft Windows",
           classifiers  = CLASSIFIERS.splitlines(),
@@ -113,7 +138,7 @@ if __name__ == "__main__":
                               "COPYRIGHT.txt",
                               "LICENSE",
                               "doc/AutoItLibrary.html",
-                              "3rdPartyTools/AutoIt/Au3Info.exe",
+                              "3rdPartyTools/AutoIt/" + exeName,
                               "3rdPartyTools/AutoIt/AutoItX.chm",
                               "3rdPartyTools/AutoIt/AutoIt_License.html",
                              ]),
