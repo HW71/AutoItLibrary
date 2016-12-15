@@ -13,7 +13,9 @@ In order to do screenshots, the AutoItLibrary uses the Open Source Python Image 
 
 Installation
 ------------
-AutoItLibrary installs its own file and, if not already present, the 3rd party AutoIt and PIL tools. In order to install:
+The installation of AutoItLibrary is done using the setup.py Python script, which itself uses the Python distutils mechanism for the setup. During the setup process also the 3rd party AutoIt and PIL tools will be installed.
+
+The following steps will install AutoItLibrary depending on the processor architecture (32 Bit or 64 Bit) of the currently used Python interpreter:
 - simply download this repository as ZIP (green button "Clone or download" => "Download ZIP")
 - then unzip into a temporary directory on your PC
 - open DOS box / command window with administrative rights in that directory and type
@@ -25,6 +27,18 @@ This will create the folder
     C:\RobotFramework\Extensions\AutoItLibrary
 
 on your PC and put various files there.
+
+Additionally it is possible to override the automatic detection of the correct processor architecture by passing either "x32" or "x64" as an additional parameter to setup.py:
+
+    python setup.py install x32
+
+This will install the 32 Bit version of AutoItLibrary by registering the 32 Bit AutoItX COM object in the system. Additionally the 32 Bit version of the Au3Info.exe tool will be copied.
+
+In order to "force" installation of the 64 Bit version use:
+
+    python setup.py install x64
+
+In case you pass a processor architecture to be used for installation, and this one doesn't match the one of the current Python interpreter, a warning will be displayed, because it has not been verified if things work as expected in such cases...
 
 
 Documentation
