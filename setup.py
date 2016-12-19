@@ -147,7 +147,7 @@ if __name__ == "__main__":
     # Do the distutils installation
     #
     setup(name         = "AutoItLibrary",
-          version      = "1.1.1",
+          version      = "1.1.2",
           description  = "AutoItLibrary for Robot Framework with 64 Bit support",
           author       = "Erik Fornoff",
           author_email = "efornoff@iname.com",
