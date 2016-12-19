@@ -18,8 +18,8 @@ Purpose: Provides a Robot Framework keyword wrapper for the freeware AutoIt tool
          See the License for the specific language governing permissions and
          limitations under the License.
 """
-__author__  = "Martin Taylor <cmtaylor@ti.com>"
-__version__ = "1.1"
+__author__  = "Erik Fornoff <erik.fornoff@gmail.com>"
+__version__ = "1.1.2"
 #
 # Import the libraries we need
 #
@@ -30,7 +30,7 @@ import types
 import Logger
 import Counter
 try :
-    import ImageGrab                    # For screen capture via Python Image Library (PIL)
+    from PIL import ImageGrab           # For screen capture via pillow
 except :
     ImageGrab = None
 #
@@ -39,7 +39,7 @@ except :
 class AutoItLibrary(Logger.Logger, Counter.Counter) :
     """
     *AutoItLibrary* is a Robot Framework keyword library wrapper for for the freeware *AutoIt* tool
-    (http://www.autoitscript.com/autoit3/index.shtml) using AutoIt's *AutoItX.dll* COM object. The
+    (http://www.autoitscript.com/autoit3/index.shtml) using AutoIt's *AutoItX3*.dll* COM object. The
     *AutoItLibrary* class provides a proxy for the AutoIt keywords callable on the AutoIt COM object and
     provides additional high-level keywords implemented as methods in this class.
 
@@ -54,7 +54,9 @@ class AutoItLibrary(Logger.Logger, Counter.Counter) :
     tool called the AutoIt Window Info Tool which is installed as part of the installation of
     *AutoItLibrary* as:
 
-        C:\RobotFramework\Extensions\AutoItLibrary\Au3Info.exe
+        C:\RobotFramework\Extensions\AutoItLibrary\Au3Info.exe (32 Bit version)
+
+        C:\RobotFramework\Extensions\AutoItLibrary\Au3Info_x64.exe (64 Bit version)
 
     This tool is documented here: http://www.autoitscript.com/autoit3/docs/intro/au3spy.htm
     """
@@ -63,7 +65,7 @@ class AutoItLibrary(Logger.Logger, Counter.Counter) :
 
     def __init__(self, OutputDir=".", TimeOut=60, CaptureScreenOnError=False) :
         """
-        | OutputDir=<path>          | Output directory for captured screenshots. Should set to _${OUTPUTDIR}_ |
+        | OutputDir=<path>          | Output directory for captured screenshots. Should be set to Robot Framework variable _${OUTPUTDIR}_ |
         | Timeout=<seconds>         | Default TimeOut value in seconds.                                       |
         |                           | This is used in other methods when their TimeOut parameter is not used. |
         | CaptureScreenOnError=True | Defaults to False.  Set to _${True}_ to capture the PC screen on any    |
@@ -87,7 +89,7 @@ class AutoItLibrary(Logger.Logger, Counter.Counter) :
         # Check that PIL is installed if CaptureScreenOnError is True
         #
         if self._CaptureScreenOnError and ImageGrab == None :
-            self._warn("Python Imaging Library (PIL) is not installed, but is required for CaptureScreenOnError... set False")
+            self._warn("Module ImageGrab provided by 'pillow' is not available, but is required for CaptureScreenOnError! Disabling CaptureScreenOnError functionality.")
             self._CaptureScreenOnError = False
         #
         # Set other properties
@@ -175,13 +177,13 @@ class AutoItLibrary(Logger.Logger, Counter.Counter) :
         """
         Capture an image of the active window into the given _FilePath_.
         The given _FilePath_ must be relative to Robot Framework output directory,
-        otherwise the embedded image will not be shown in the log file.
+        otherwise the embedded image will not be shown in the Robot report file.
         """
         #
         # Check that PIL is installed
         #
         if ImageGrab == None :
-            raise RuntimeError("Python Imaging Library (PIL) is not installed, but is required for GetActiveWindowImage")
+            raise RuntimeError("Module ImageGrab provided by 'pillow' is not available, but is required for CaptureScreenOnError!")
         #
         # Check for a valid FilePath and make sure the directories exist
         #
@@ -216,13 +218,13 @@ class AutoItLibrary(Logger.Logger, Counter.Counter) :
         """
         Capture a full screen image into the given _FilePath_.
         The given _FilePath_ must be relative to Robot Framework output directory,
-        otherwise the embedded image will not be shown in the log file.
+        otherwise the embedded image will not be shown in the Robot Framework report file.
         """
         #
         # Check that PIL is installed
         #
         if ImageGrab == None :
-            raise RuntimeError("Python Imaging Library (PIL) is not installed, but is required for GetScreenImage")
+            raise RuntimeError("Module ImageGrab provided by 'pillow' is not available, but is required for CaptureScreenOnError!")
         #
         # Check for a valid FilePath and make sure the directories exist
         #
