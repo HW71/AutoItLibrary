@@ -8,15 +8,26 @@ Introduction
 ------------
 AutoItLibrary is a Python keyword library that extends the Robot Framework (http://code.google.com/p/robotframework/) by providing keywords based on the AutoItX COM object. The AutoItX COM object itself belongs to AutoIt (http://www.autoitscript.com/autoit3/index.shtml), which is a set of freeware tools providing for example a scripting language for automating the Windows GUI.
 
-In order to do screenshots, the AutoItLibrary uses the Open Source Python Image Library tool PIL (http://www.pythonware.com/products/pil/). Unfortunately this library is not maintained anymore and additionally only available for 32 Bit operating systems. Hence automatically taking screenshots in case of a failed AutoItLibrary keyword is currently not possible on 64 Bit OSs. A possible workaround would be to adapt AutoItLibrary in such a way that the PIL fork "pillow" (https://python-pillow.org/) is used.
+In order to do screenshots, the AutoItLibrary uses the PIL fork ["Pillow"](https://github.com/python-pillow/Pillow), which supports both 32 Bit and 64 Bit Windows versions.
+
+Prerequisites
+-------------
+- download and install correct version of [Python](https://www.python.org/downloads/) (i.e. 32 Bit or 64 Bit)
+- download and install Robot Framework by either using "pip install robotframework" or using [official website](http://robotframework.org/)
+- download and install [Python for Windows](https://sourceforge.net/projects/pywin32/files/) extension
+- in order to be able to automatically take screenshots in case a AutoItLibrary keyword fails, you need to additionally install the PIL fork "pillow" by using "pip" (see below)
 
 
 Installation
 ------------
-The installation of AutoItLibrary is done using the setup.py Python script, which itself uses the Python distutils mechanism for the setup. During the setup process also the 3rd party AutoIt and PIL tools will be installed.
+The installation of AutoItLibrary is done using the setup.py Python script, which itself uses the Python distutils mechanism for the setup. 
 
-The following steps will install AutoItLibrary depending on the processor architecture (32 Bit or 64 Bit) of the currently used Python interpreter:
-- simply download this repository as ZIP (green button "Clone or download" => "Download ZIP")
+As a prerequisite the correct version of Python (i.e. either 32 Bit or 64 Bit) should have already been installed. Afterwards the PIL fork 'pillow' needs to be installed using pip. Hence, open a DOS box / command window and enter 
+
+    pip install pillow
+
+TAfterwards use the following steps to install AutoItLibrary depending on the processor architecture (32 Bit or 64 Bit) of the currently used Python interpreter:
+- simply download this GitHub repository as ZIP (green button "Clone or download" => "Download ZIP")
 - then unzip into a temporary directory on your PC
 - open DOS box / command window with administrative rights in that directory and type
 
