@@ -6,7 +6,7 @@ https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/
 
 Introduction
 ------------
-AutoItLibrary is a Python keyword library that extends the Robot Framework (http://code.google.com/p/robotframework/) by providing keywords based on the AutoItX COM object. The AutoItX COM object itself belongs to AutoIt (http://www.autoitscript.com/autoit3/index.shtml), which is a set of freeware tools providing for example a scripting language for automating the Windows GUI.
+AutoItLibrary is a Python keyword library that extends the [Robot Framework](http://code.google.com/p/robotframework/) by providing keywords based on the AutoItX COM object. The AutoItX COM object itself belongs to [AutoIt](http://www.autoitscript.com/autoit3/index.shtml), which is a set of freeware tools providing for example a scripting language for automating the Windows GUI.
 
 In order to do screenshots, the AutoItLibrary uses the PIL fork ["Pillow"](https://github.com/python-pillow/Pillow), which supports both 32 Bit and 64 Bit Windows versions.
 
