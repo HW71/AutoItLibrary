@@ -61,7 +61,7 @@ In order to use the AutoItLibrary simply add the Library as "Import" to your Rob
 
 As you can see there are two additional parameters which can be passed to the library:
 
-1. the output directory used to specify the location of screenshots taken in case a keyword fails. If you don't specify this then the screenshots will be located in the directory where the Robot test resides. If you OutputDir as shown above then the screenshot files will be located in the same directory where the Robot report / log file will be stored. This is in most cases what you want to do, because otherwise the screenshots will not be shown when you view it in your browser.
+1. the output directory used to specify the location of screenshots taken in case a keyword fails. If you don't specify this then the screenshots will be located in the directory where the Robot test resides. If you set OutputDir to ${OUTPUTDIR} as shown above then the screenshot files will be located in the same directory where the Robot report / log file will be stored. This is in most cases what you want to do, because otherwise the screenshots will not be shown when you view the Robot reports in your browser.
 2. a Boolean flag which enables or disables the automatic capture of screenshots. If not specified it will default to "False".
 
 After importing the Library to your Robot test it should be ready to use. In RIDE the library should be written in black color. If it is shown in red then something went wrong with the import. Sometimes the console gives at least a hint regarding the root cause of the problem.
