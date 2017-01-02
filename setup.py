@@ -104,10 +104,10 @@ if __name__ == "__main__":
         sys.exit(2)
 
     #
-    # Install and register AutoItX
+    # Copy AutoItX COM object
     #
     if os.path.isfile(os.path.join(get_python_lib(), "AutoItLibrary/lib/"+dllName)) :
-        print "Don't think we need to unregister the old one..."
+        print "AutoItX3 COM Dll already present in PythonLib subdir - for now we don't try to unregister a possibly present COM server..."
 
     instDir = os.path.normpath(os.path.join(get_python_lib(), "AutoItLibrary/lib"))
     if not os.path.isdir(instDir) :
@@ -121,7 +121,14 @@ if __name__ == "__main__":
     #
     cmd = r"%SYSTEMROOT%\system32\regsvr32.exe /S " + instFile
     print "\nRegistering COM object using command:\n{}".format(cmd)
-    subprocess.check_call(cmd, shell=True)
+    
+    try:
+        subprocess.check_call(cmd, shell=True)
+        print "Done!"
+    except subprocess.CalledProcessError as e:
+        print "\nError while registering COM object (maybe admin rights missing?)..."
+        print "regsvr32 exited with returncode {0} and error message: {1}".format(e.returncode, e.output)
+        sys.exit(2)
 
     #
     # Make sure we have win32com installed
