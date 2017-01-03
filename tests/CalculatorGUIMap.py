@@ -21,7 +21,7 @@ Purpose: This is a Robot Framework variable file according to the specifications
          See the License for the specific language governing permissions and
          limitations under the License.
 """
-__author__  = "Erik Fornoff <erik.fornoff@gmail.com>"
+__author__  = "Erik Fornoff <efornoff@iname.com>"
 __version__ = "2.0.0"
 #
 # Map logical names of buttons to the implemented names in the Windows Calculator
