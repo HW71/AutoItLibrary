@@ -18,7 +18,7 @@ Purpose: Provides a Robot Framework keyword wrapper for the freeware AutoIt tool
          See the License for the specific language governing permissions and
          limitations under the License.
 """
-__author__  = "Erik Fornoff <erik.fornoff@gmail.com>"
+__author__  = "Erik Fornoff <efornoff@iname.com>"
 __version__ = "2.0.0"
 #
 # Import the libraries we need
