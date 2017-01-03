@@ -18,7 +18,7 @@ Purpose: This is a Python "Distutils" setup program used to build installers for
          See the License for the specific language governing permissions and
          limitations under the License.
 """
-__author__  = "Erik Fornoff <erik.fornoff@gmail.com>"
+__author__  = "Erik Fornoff <efornoff@iname.com>"
 
 from distutils.core      import setup
 from distutils.sysconfig import get_python_lib
@@ -154,7 +154,7 @@ if __name__ == "__main__":
     # Do the distutils installation
     #
     setup(name         = "AutoItLibrary",
-          version      = "1.1.2",
+          version      = "2.0.0",
           description  = "AutoItLibrary for Robot Framework with 64 Bit support",
           author       = "Erik Fornoff",
           author_email = "efornoff@iname.com",
@@ -167,7 +167,6 @@ if __name__ == "__main__":
           packages     = ["AutoItLibrary"],
           data_files   = [(destPath,
                              ["README.md",
-                              "COPYRIGHT.txt",
                               "LICENSE",
                               "doc/AutoItLibrary.html",
                               "3rdPartyTools/AutoIt/" + exeName,

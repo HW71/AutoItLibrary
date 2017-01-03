@@ -4,7 +4,7 @@ Module:  AutoItLibrary
 Purpose: Provides a Robot Framework keyword wrapper for the freeware AutoIt tool
          (http://www.autoitscript.com/autoit3/index.shtml) via AutoIt's AutoItX.dll COM object.
 
-         Copyright (c) 2008-2010 Texas Instruments, Inc.
+         Based on AutoItLibrary 1.1 by Texas Instruments, Inc. / Martin Taylor hosted on Google Code.
 
          Licensed under the Apache License, Version 2.0 (the "License");
          you may not use this file except in compliance with the License.
@@ -18,8 +18,8 @@ Purpose: Provides a Robot Framework keyword wrapper for the freeware AutoIt tool
          See the License for the specific language governing permissions and
          limitations under the License.
 """
-__author__  = "Erik Fornoff <erik.fornoff@gmail.com>"
-__version__ = "1.1.2"
+__author__  = "Erik Fornoff <efornoff@iname.com>"
+__version__ = "2.0.0"
 #
 # Import the libraries we need
 #

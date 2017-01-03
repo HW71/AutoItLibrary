@@ -6,7 +6,7 @@ Purpose: Defines a Logger class from which other classes can inherit the ability
          this method could be overridden in the class that uses it in order to log in some other style
          or to some other output path.
 
-         Copyright (c) 2009 Texas Instruments
+         Based on AutoItLibrary 1.1 by Texas Instruments, Inc. / Martin Taylor hosted on Google Code.
 
          Licensed under the Apache License, Version 2.0 (the "License");
          you may not use this file except in compliance with the License.
@@ -20,8 +20,8 @@ Purpose: Defines a Logger class from which other classes can inherit the ability
          See the License for the specific language governing permissions and
          limitations under the License.
 """
-__author__ = "Martin Taylor <cmtaylor@ti.com>"
-__version__ = "1.0.1"
+__author__ = "Erik Fornoff <efornoff@iname.com>"
+__version__ = "2.0.0"
 
 class Logger :
     def _log(self, message, level='INFO') :

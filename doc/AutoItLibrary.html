@@ -87,13 +87,17 @@ In the following documentation on each keyword, the keywords whose documentation
 <br />
 C:\RobotFramework\Extensions\AutoItLibrary\AutoItX.chm<br />
 <br />
-In order to discover the control identifiers in a given Windows GUI, AutoIt provides a standalone tool called the AutoIt Window Info Tool which is installed as part of the installation of <b>AutoItLibrary</b> as:<br />
+In order to discover the control identifiers in a given Windows GUI, AutoIt provides a standalone tool called the AutoIt Window Info Tool which is installed as part of the installation of <b>AutoItLibrary</b>. In case of a 32 Bit environment the file is named:<br />
 <br />
 C:\RobotFramework\Extensions\AutoItLibrary\Au3Info.exe<br />
 <br />
+In case of a 64 Bit environment the file is named:<br />
+<br />
+C:\RobotFramework\Extensions\AutoItLibrary\Au3Info_x64.exe<br />
+<br />  
 This tool is documented here: <a href="http://www.autoitscript.com/autoit3/docs/intro/au3spy.htm">http://www.autoitscript.com/autoit3/docs/intro/au3spy.htm</a></p>
 
-<h2 id="importing">Importing</h2>
+<h2 id="importing">Importing in Robot</h2>
 <table class="keywords">
 <tr>
   <th class="arg">Arguments</th>
@@ -104,7 +108,7 @@ This tool is documented here: <a href="http://www.autoitscript.com/autoit3/docs/
   <td class="doc"><table border="1" class="doc">
 <tr>
 <td>OutputDir=&lt;path&gt;</td>
-<td>Output directory for captured screenshots. Should set to <i>${OUTPUTDIR}</i></td>
+<td>Output directory for captured screenshots. Should be set to <i>${OUTPUTDIR}</i></td>
 </tr>
 <tr>
 <td>Timeout=&lt;seconds&gt;</td>
