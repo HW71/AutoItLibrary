@@ -2,8 +2,8 @@
 ::
 :: CMD file to run the AutoIt tests in this directory
 ::
-:: Copyright (c) 2008-2009 Texas Instruments, Inc.
-:: Author: Martin Taylor <cmtaylor@ti.com>
+:: Based on AutoItLibrary 1.1 by Texas Instruments, Inc. / Martin Taylor hosted on Google Code.
+:: Author: Erik Fornoff <erik.fornoff@gmail.com>
 ::
 ::  Licensed under the Apache License, Version 2.0 (the "License");
 ::  you may not use this file except in compliance with the License.
