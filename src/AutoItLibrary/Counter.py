@@ -4,7 +4,7 @@ Module:  Counter
 Purpose: Defines a Counter class from which other classes can inherit the ability to initialize a
          counter at class instantiation and get the next number in the sequence with a _next method.
 
-         Copyright (c) 2009 Texas Instruments
+         Based on AutoItLibrary 1.1 by Texas Instruments, Inc. / Martin Taylor hosted on Google Code.
 
          Licensed under the Apache License, Version 2.0 (the "License");
          you may not use this file except in compliance with the License.
@@ -18,8 +18,8 @@ Purpose: Defines a Counter class from which other classes can inherit the abilit
          See the License for the specific language governing permissions and
          limitations under the License.
 """
-__author__ = "Martin Taylor <cmtaylor@ti.com>"
-__version__ = "1.0"
+__author__ = "Erik Fornoff <erik.fornoff@gmail.com>"
+__version__ = "2.0.0"
 
 class Counter:
     def __init__(self):
