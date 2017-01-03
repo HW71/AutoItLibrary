@@ -7,7 +7,7 @@ Purpose: This is a Robot Framework variable file according to the specifications
          Framework tests to map useful Windows Calculator GUI object names (such as the keypad keys) to
          their underlying Windows GUI object names required by AutoIt.
 
-         Copyright (c) 2009-2010 Texas Instruments
+         Based on AutoItLibrary 1.1 by Texas Instruments, Inc. / Martin Taylor hosted on Google Code.
 
          Licensed under the Apache License, Version 2.0 (the "License");
          you may not use this file except in compliance with the License.
@@ -21,8 +21,8 @@ Purpose: This is a Robot Framework variable file according to the specifications
          See the License for the specific language governing permissions and
          limitations under the License.
 """
-__author__  = "Martin Taylor <cmtaylor@ti.com>"
-__version__ = "1.1"
+__author__  = "Erik Fornoff <erik.fornoff@gmail.com>"
+__version__ = "2.0.0"
 #
 # Map logical names of buttons to the implemented names in the Windows Calculator
 # GUIMAP_51 is the mapping for Calculator version 5.1 (WinXP version)
