@@ -160,7 +160,6 @@ if __name__ == "__main__":
           packages     = ["AutoItLibrary"],
           data_files   = [(destPath,
                              ["README.md",
-                              "COPYRIGHT.txt",
                               "LICENSE",
                               "doc/AutoItLibrary.html",
                               "3rdPartyTools/AutoIt/" + exeName,
