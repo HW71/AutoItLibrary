@@ -18,7 +18,7 @@ Purpose: This is a Python "Distutils" setup program used to build installers for
          See the License for the specific language governing permissions and
          limitations under the License.
 """
-__author__  = "Erik Fornoff <erik.fornoff@gmail.com>"
+__author__  = "Erik Fornoff <efornoff@iname.com>"
 
 from distutils.core      import setup
 from distutils.sysconfig import get_python_lib
