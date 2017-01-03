@@ -18,7 +18,7 @@ Purpose: Defines a Counter class from which other classes can inherit the abilit
          See the License for the specific language governing permissions and
          limitations under the License.
 """
-__author__ = "Erik Fornoff <erik.fornoff@gmail.com>"
+__author__ = "Erik Fornoff <efornoff@iname.com>"
 __version__ = "2.0.0"
 
 class Counter:
