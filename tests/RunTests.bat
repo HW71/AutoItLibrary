@@ -3,7 +3,7 @@
 :: CMD file to run the AutoIt tests in this directory
 ::
 :: Based on AutoItLibrary 1.1 by Texas Instruments, Inc. / Martin Taylor hosted on Google Code.
-:: Author: Erik Fornoff <erik.fornoff@gmail.com>
+:: Author: Erik Fornoff <efornoff@iname.com>
 ::
 ::  Licensed under the Apache License, Version 2.0 (the "License");
 ::  you may not use this file except in compliance with the License.
