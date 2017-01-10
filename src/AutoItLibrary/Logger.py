@@ -21,7 +21,7 @@ Purpose: Defines a Logger class from which other classes can inherit the ability
          limitations under the License.
 """
 __author__ = "Erik Fornoff <efornoff@iname.com>"
-__version__ = "2.0.0"
+__version__ = "2.0.1"
 
 class Logger :
     def _log(self, message, level='INFO') :
