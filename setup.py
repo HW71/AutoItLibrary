@@ -56,7 +56,11 @@ if __name__ == "__main__":
     # Check for valid number of arguments...
     #
     if ((len(sys.argv) != 2) and (len(sys.argv) != 3)) :
-        print "Wrong number of arguments: {}...".format(len(sys.argv))
+        print "Wrong number of arguments!"
+        print "For automatic processor architecture detection (recomended) please use:"
+        print "'python setup.py install' (without quotes)"
+        print "\nIn order to specify processor architecure on your own please use:"
+        print "'python setup.py install x32' (for 32 Bit) or 'python setup.py install x64' (for 64 Bit)"
         sys.exit(2)
 
     #
@@ -74,11 +78,13 @@ if __name__ == "__main__":
         passedArguments = sys.argv[2].lower()
 
         if (passedArguments != "x32") and (passedArguments != "x64") :
-            print "Invalid arguments..."
+            print "Invalid arguments!"
+            print "In order to specify processor architecure on your own please use:"
+            print "'python setup.py install x32' (for 32 Bit) or 'python setup.py install x64' (for 64 Bit)"
             sys.exit(2)
 
         if ((passedArguments == "x32") and isX64Python is True) or ((passedArguments == "x64") and isX64Python is False) :
-            print "WARNING: Requested processor architecture {} doesn't seem to match current Python interpreter!".format(passedArguments)
+            print "\nWARNING: Requested processor architecture {} doesn't seem to match current Python interpreter!".format(passedArguments)
 
         # Ugly hack in order to not interfere with call to Distutils setup()
         if (passedArguments == "x32") :
@@ -100,7 +106,7 @@ if __name__ == "__main__":
         # Use 64 Bit version of Au3Info tool later on in distribution process
         exeName = "Au3Info_x64.exe"
     else :
-        print "Problem detecting processor architecture to be used for installation!"
+        print "Eror while detecting processor architecture to be used for installation!"
         sys.exit(2)
 
     #
