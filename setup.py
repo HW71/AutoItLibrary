@@ -106,7 +106,7 @@ if __name__ == "__main__":
         # Use 64 Bit version of Au3Info tool later on in distribution process
         exeName = "Au3Info_x64.exe"
     else :
-        print "Eror while detecting processor architecture to be used for installation!"
+        print "Error while detecting processor architecture to be used for installation!"
         sys.exit(2)
 
     #
@@ -160,7 +160,7 @@ if __name__ == "__main__":
     # Do the distutils installation
     #
     setup(name         = "AutoItLibrary",
-          version      = "2.0.0",
+          version      = "2.0.1",
           description  = "AutoItLibrary for Robot Framework with 64 Bit support",
           author       = "Erik Fornoff",
           author_email = "efornoff@iname.com",
