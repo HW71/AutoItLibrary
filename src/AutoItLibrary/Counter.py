@@ -19,7 +19,7 @@ Purpose: Defines a Counter class from which other classes can inherit the abilit
          limitations under the License.
 """
 __author__ = "Erik Fornoff <efornoff@iname.com>"
-__version__ = "2.0.0"
+__version__ = "2.0.1"
 
 class Counter:
     def __init__(self):
